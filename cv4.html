@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CV</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+    }
+
+    .profil {
+      flex: 0 0 200px;
+      margin-right: 20px;
+    }
+
+    .detalii {
+      flex: 1;
+    }
+
+    .camp-input {
+      width: 60%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .lista-item {
+      margin-bottom: 5px;
+    }
+
+    .btn-adauga {
+      cursor: pointer;
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      margin-top: 10px;
+    }
+
+    .btn-adauga:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="profil">
+      <h1>Profil</h1>
+      <img src="poza.jpg" width="150" height="150" alt="Poza de profil">
+    </div>
+    <div class="detalii">
+      <h1>Detalii personale</h1>
+      <input type="text" id="input-nume" class="camp-input" placeholder="Nume și prenume">
+      <input type="text" id="input-telefon" class="camp-input" placeholder="Telefon">
+      <input type="email" id="input-email" class="camp-input" placeholder="Email">
+      <input type="text" id="input-adresa" class="camp-input" placeholder="Adresă">
+      <h1>Educație</h1>
+      <ul id="educatie-lista">
+        <!-- Elemente de completat pe pagină -->
+      </ul>
+      <input type="text" id="input-educatie" class="camp-input" placeholder="Adaugă informații despre educație">
+      <button id="btn-educatie" class="btn-adauga">Adaugă</button>
+      <h1>Experiență profesională</h1>
+      <ul id="experienta-lista">
+        <!-- Elemente de completat pe pagină -->
+      </ul>
+      <input type="text" id="input-experienta" class="camp-input" placeholder="Adaugă informații despre experiența profesională">
+      <button id="btn-experienta" class="btn-adauga">Adaugă</button>
+      <h1>Abilități</h1>
+      <ul id="abilitati-lista">
+        <!-- Elemente de completat pe pagină -->
+      </ul>
+      <input type="text" id="input-abilitati" class="camp-input" placeholder="Adaugă abilități">
+      <button id="btn-abilitati" class="btn-adauga">Adaugă</button>
+      <h1>Limbaje de programare</h1>
+      <ul id="limbaje-lista">
+        <!-- Elemente de completat pe pagină -->
+      </ul>
+      <input type="text" id="input-limbaje" class="camp-input"
+
+
+
+placeholder="Adaugă limbaje de programare">
+<button id="btn-limbaje" class="btn-adauga">Adaugă</button>
+</div>
+
+  </div>
+  <script>
+    // Funcția pentru adăugarea unui element într-o listă
+    function adaugaElement(listaId, inputId) {
+      const input = document.getElementById(inputId);
+      const valoare = input.value;
+      if (valoare !== "") {
+        const lista = document.getElementById(listaId);
+        const li = document.createElement("li");
+        li.className = "lista-item";
+        li.textContent = valoare;
+        lista.appendChild(li);
+        input.value = "";
+      }
+    }
+
+    // Evenimente pentru butoanele de adăugare
+    document.getElementById("btn-educatie").addEventListener("click", function() {
+      adaugaElement("educatie-lista", "input-educatie");
+    });
+
+    document.getElementById("btn-experienta").addEventListener("click", function() {
+      adaugaElement("experienta-lista", "input-experienta");
+    });
+
+    document.getElementById("btn-abilitati").addEventListener("click", function() {
+      adaugaElement("abilitati-lista", "input-abilitati");
+    });
+
+    document.getElementById("btn-limbaje").addEventListener("click", function() {
+      adaugaElement("limbaje-lista", "input-limbaje");
+    });
+  </script>
+</body>
+</html>

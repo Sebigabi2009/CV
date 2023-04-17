@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CV</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+    }
+
+    .profil {
+      flex: 0 0 200px;
+      margin-right: 20px;
+    }
+
+    .detalii {
+      flex: 1;
+    }
+
+    .camp-input {
+      width: 60%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .lista-item {
+      margin-bottom: 5px;
+    }
+    .btn-adauga {
+      cursor: pointer;
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      margin-top: 10px;
+    }
+
+    .btn-adauga:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div id="cv-container">
+    <div id="profil-container">
+      <img id="profil-img" src="poza.jpg"width="150" height="150" >
+      <ul>
+      <input id="input-nume" class="input-cv" type="text" placeholder="Nume Prenume"></ul>
+      <ul>
+      <input id="input-Adresa" class="input-cv" type="text" placeholder="Adresa"></ul>
+      <ul>
+      <input id="input-telefon" class="input-cv" type="text" placeholder="Telefon"></ul>
+      <ul>
+      <input id="input-email" class="input-cv" type="text" placeholder="Email"></ul>
+    </div>
+    <div id="educatie-container">
+      <h2>Educație</h2>
+      <ul id="educatie-lista" class="lista-cv"></ul>
+      <input id="input-educatie" class="input-cv" type="text" placeholder="Adaugă educație">
+      <button id="btn-educatie" class="btn-adauga">Adaugă</button>
+    </div>
+    <div id="experienta-container">
+      <h2>Experiență Profesională</h2>
+      <ul id="experienta-lista" class="lista-cv"></ul>
+      <input id="input-experienta" class="input-cv" type="text" placeholder="Adaugă experiență profesională">
+      <button id="btn-experienta" class="btn-adauga">Adaugă</button>
+    </div>
+    <div id="abilitati-container">
+      <h2>Abilități</h2>
+      <ul id="abilitati-lista" class="lista-cv"></ul>
+      <input id="input-abilitati" class="input-cv" type="text" placeholder="Adaugă abilități">
+      <button id="btn-abilitati" class="btn-adauga">Adaugă</button>
+    </div>
+    <div id="limbaje-container">
+      <h2>Limbaje de Programare</h2>
+      <ul id="limbaje-lista" class="lista-cv"></ul>
+      <input id="input-limbaje" class="input-cv" type="text" placeholder="Adaugă limbaje de programare">
+      <button id="btn-limbaje" class="btn-adauga">Adaugă</button>
+    </div>
+    <div id="limbaje-container">
+      <h2>Limbi straine</h2>
+      <ul id="limbi-lista" class="lista-cv"></ul>
+      <input id="input-limbi" class="input-cv" type="text" placeholder="Adaugă limbi straine">
+      <button id="btn-limbi" class="btn-adauga">Adaugă</button>
+    </div>
+  </div>
+
+  <script>
+    function adaugaElement(listaId, inputId) {
+      const input = document.getElementById(inputId);
+      const valoare = input.value;
+      if (valoare !== "") {
+        const lista = document.getElementById(listaId);
+        const li = document.createElement("li");
+        li.className = "lista-item";
+        li.textContent = valoare;
+        lista.appendChild(li);
+        input.value = "";
+      }
+    }
+function stergeElement(element) {
+element.parentNode.removeChild(element);
+}
+
+document.getElementById("btn-educatie").addEventListener("click", function() {
+  adaugaElement("educatie-lista", "input-educatie");
+});
+
+document.getElementById("btn-experienta").addEventListener("click", function() {
+  adaugaElement("experienta-lista", "input-experienta");
+});
+
+document.getElementById("btn-abilitati").addEventListener("click", function() {
+  adaugaElement("abilitati-lista", "input-abilitati");
+});
+
+document.getElementById("btn-limbaje").addEventListener("click", function() {
+  adaugaElement("limbaje-lista", "input-limbaje");
+});
+document.getElementById("btn-limbi").addEventListener("click", function() {
+  adaugaElement("limbi-lista", "input-limbi");
+})
+
+document.getElementById("input-educatie").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    adaugaElement("educatie-lista", "input-educatie");
+  }
+});
+
+document.getElementById("input-experienta").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    adaugaElement("experienta-lista", "input-experienta");
+  }
+});
+
+document.getElementById("input-abilitati").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    adaugaElement("abilitati-lista", "input-abilitati");
+  }
+});
+
+document.getElementById("input-limbi").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    adaugaElement("limbi-lista", "input-limbi");
+  }
+});
+document.addEventListener("click", function(event) {
+  if (event.target.classList.contains("lista-item")) {
+    stergeElement(event.target);
+  }
+});
+  </script>
+</body>
+</html>
